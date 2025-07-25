@@ -13,4 +13,9 @@ const getComputerChoice =()=>{
     }
 }
 
-console.log(getComputerChoice())
+const getHumanChoice = () =>{
+    let choice = prompt("Your turn")
+    return choice;
+}
+
+console.log(getHumanChoice())

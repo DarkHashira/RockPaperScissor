@@ -1,6 +1,7 @@
-const playGame=()=>{
-    let humanScore = 0;
-    let computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
+
+const playGame=(humanChoice)=>{
 
      const getComputerChoice =()=>{
         let choice = Math.floor(Math.random()*3)
@@ -15,11 +16,6 @@ const playGame=()=>{
             default:
                 return "error"
         }
-    }
-
-    const getHumanChoice = () =>{
-        let choice = prompt("Your turn")
-        return choice.toLowerCase();
     }
 
     const playRound=(humanChoice,computerChoice)=>{
@@ -60,10 +56,7 @@ const playGame=()=>{
             }
         }
     }
-    const round = parseInt(prompt("Enter the number of rounds:- "))
-    for (let i = 0; i < round; i++)
-    {
-        const humanSelection = getHumanChoice();
+        const humanSelection = humanChoice
         const computerSelection = getComputerChoice();
 
         console.log(`Human : ${humanSelection}`)
@@ -71,7 +64,6 @@ const playGame=()=>{
         console.log(playRound(humanSelection,computerSelection))
         console.log(`Score
             Human: ${humanScore} Computer: ${computerScore}`)
-    }
         if (humanScore > computerScore)
     {
         console.log("Winner is Human")
@@ -85,4 +77,11 @@ const playGame=()=>{
     }
 }
 
-playGame();
+const buttons = document.querySelectorAll("button")
+buttons.forEach((button)=>{
+    button.addEventListener("click", ()=>{
+        const getHumanChoice = button.id
+        playGame(getHumanChoice);         
+    })
+})
+

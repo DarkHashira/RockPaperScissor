@@ -86,6 +86,15 @@ const playGame=(humanChoice)=>{
             })
         }
 
+        setTimeout(()=>{
+            humanScore= 0
+            computerScore= 0 
+            scoreBoard.innerHTML=""
+            buttons.forEach((button)=>{
+                button.disabled=false
+            })
+        },3000)
+
      
 }
 

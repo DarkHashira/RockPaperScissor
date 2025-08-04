@@ -10,6 +10,8 @@ body{
     width: 100vh;
     background-color: #BBDED6;
     height: 100vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
 }
 
 .option{

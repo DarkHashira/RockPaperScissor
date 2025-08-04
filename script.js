@@ -59,7 +59,21 @@ const playGame=(humanChoice)=>{
         const humanSelection = humanChoice
         const computerSelection = getComputerChoice();
 
-        console.log(`Human : ${humanSelection}`)
+        // console.log(`Human : ${humanSelection}`)
+        const resultShow = document.createElement("p")
+        resultShow.innerHTML = `Your choice = ${humanSelection} <br>
+        Computer's choice = ${computerSelection} <br>
+        ${playRound(humanSelection, computerSelection)} <br>
+        <strong>Score</strong><br>
+        Human: ${humanScore} <br>
+        Computer: ${computerScore} <br>
+        ${humanScore > computerScore ? "Winner is Human" :
+        computerScore > humanScore ? "Computer wins" :
+        "It's a draw!"}`;
+
+        scoreBoard.appendChild(resultShow)
+        scoreBoard.scrollTop = scoreBoard.scrollHeight;
+
         console.log(`Computer : ${computerSelection}`)
         console.log(playRound(humanSelection,computerSelection))
         console.log(`Score
@@ -86,6 +100,4 @@ buttons.forEach((button)=>{
 })
 
 
-const scoreBoard = document.querySelector("#result")
-scoreBoard
-
+const scoreBoard = document.querySelector(".result")

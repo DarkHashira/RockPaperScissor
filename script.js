@@ -3,7 +3,11 @@ let computerScore = 0;
 
 const playGame=(humanChoice)=>{
 
-     const getComputerChoice =()=>{
+    if(humanScore===5 || computerScore === 5)
+        {
+            return
+        } 
+    const getComputerChoice =()=>{
         let choice = Math.floor(Math.random()*3)
 
         switch (choice) {
@@ -66,29 +70,23 @@ const playGame=(humanChoice)=>{
         ${playRound(humanSelection, computerSelection)} <br>
         <strong>Score</strong><br>
         Human: ${humanScore} <br>
-        Computer: ${computerScore} <br>
-        ${humanScore > computerScore ? "Winner is Human" :
-        computerScore > humanScore ? "Computer wins" :
-        "It's a draw!"}`;
+        Computer: ${computerScore}`;
 
-        scoreBoard.appendChild(resultShow)
-        scoreBoard.scrollTop = scoreBoard.scrollHeight;
+         scoreBoard.appendChild(resultShow)
+            scoreBoard.scrollTop = scoreBoard.scrollHeight;
 
-        console.log(`Computer : ${computerSelection}`)
-        console.log(playRound(humanSelection,computerSelection))
-        console.log(`Score
-            Human: ${humanScore} Computer: ${computerScore}`)
-        if (humanScore > computerScore)
-    {
-        console.log("Winner is Human")
-    }
-    else if(computerScore> humanScore)
-    {
-        console.log("Computer wins")
-    }
-    else{
-        console.log("Its a draw")
-    }
+        if(humanScore===5 || computerScore === 5)
+        {
+            const winner = document.createElement("span")
+            winner.style.color ="green"
+            winner.innerHTML = `${humanScore === 5 ? "Yeh ! you win" : "Ahh! Computer wins"}`
+            scoreBoard.appendChild(winner)
+            buttons.forEach((button)=>{
+                button.disabled=true;
+            })
+        }
+
+     
 }
 
 const buttons = document.querySelectorAll("button")

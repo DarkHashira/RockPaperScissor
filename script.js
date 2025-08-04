@@ -85,3 +85,7 @@ buttons.forEach((button)=>{
     })
 })
 
+
+const scoreBoard = document.querySelector("#result")
+scoreBoard
+

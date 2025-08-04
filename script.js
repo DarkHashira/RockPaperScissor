@@ -63,30 +63,29 @@ const playGame=(humanChoice)=>{
         const humanSelection = humanChoice
         const computerSelection = getComputerChoice();
 
-        // console.log(`Human : ${humanSelection}`)
         const resultShow = document.createElement("p")
-        resultShow.innerHTML = `Your choice = ${humanSelection} <br>
-        Computer's choice = ${computerSelection} <br>
+        resultShow.innerHTML = `<strong>Your Choice</strong> = ${humanSelection} <br>
+        <strong>Computer's choice</strong> = ${computerSelection} <br>
         ${playRound(humanSelection, computerSelection)} <br>
         <strong>Score</strong><br>
         Human: ${humanScore} <br>
         Computer: ${computerScore}`;
 
-         scoreBoard.appendChild(resultShow)
-            scoreBoard.scrollTop = scoreBoard.scrollHeight;
+        scoreBoard.appendChild(resultShow)
 
         if(humanScore===5 || computerScore === 5)
         {
             const winner = document.createElement("span")
-            winner.style.color ="green"
-            winner.innerHTML = `${humanScore === 5 ? "Yeh ! you win" : "Ahh! Computer wins"}`
-            scoreBoard.appendChild(winner)
+                winner.style.color ="green"
+                winner.style.marginLeft = "10px"
+                winner.style.fontSize = "20px"
+                winner.style.fontWeight = "bold"
+                winner.innerHTML = `${humanScore === 5 ? "🎉 Yeh! You win!" : "💻 Ahh! Computer wins!"}`
+                scoreBoard.appendChild(winner)
             buttons.forEach((button)=>{
                 button.disabled=true;
             })
-        }
-
-        setTimeout(()=>{
+             setTimeout(()=>{
             humanScore= 0
             computerScore= 0 
             scoreBoard.innerHTML=""
@@ -94,6 +93,8 @@ const playGame=(humanChoice)=>{
                 button.disabled=false
             })
         },3000)
+        }
+        scoreBoard.scrollTop = scoreBoard.scrollHeight;
 
      
 }
